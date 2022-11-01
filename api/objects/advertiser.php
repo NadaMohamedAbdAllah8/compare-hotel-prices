@@ -24,9 +24,8 @@ class Advertiser
     // read advertisers
     public function read()
     {
-
         // select all query
-        $query = "SELECT 'id', 'name', 'url', 'method'  FROM " . $this->table_name .
+        $query = "SELECT id, name, url, method  FROM " . $this->table_name .
             "  ORDER BY created DESC";
 
         // prepare query statement
@@ -51,8 +50,6 @@ class Advertiser
         // prepare query
         $stmt = $this->conn->prepare($query);
 
-        var_dump((strip_tags($this->url)));
-
         // sanitize
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->url = (strip_tags($this->url));
@@ -60,7 +57,7 @@ class Advertiser
         $this->method = htmlspecialchars(strip_tags($this->method));
         $this->created = htmlspecialchars(strip_tags(date("Y-m-d H:i:s")));
         $this->modified = htmlspecialchars(strip_tags(date("Y-m-d H:i:s")));
-        var_dump($this->url);
+
         // bind values
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(':url', $this->url);

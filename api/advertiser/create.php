@@ -30,29 +30,29 @@ if (
     !empty($data->method)
 ) {
 
-// set advertiser property values
+    // set advertiser property values
     $advertiser->name = $data->name;
     $advertiser->url = $data->url;
     $advertiser->method = $data->method;
     $advertiser->created = date('Y-m-d H:i:s');
 
-// create the advertiser
+    // create the advertiser
     if ($advertiser->create()) {
 
-// set response code - 201 created
+        // set response code - 201 created
         http_response_code(201);
 
-// tell the user
+        // tell the user
         echo json_encode(array("message" => "Advertiser was created."));
     }
 
-// if unable to create the advertiser, tell the user
+    // if unable to create the advertiser, tell the user
     else {
 
-// set response code - 503 service unavailable
+        // set response code - 503 service unavailable
         http_response_code(503);
 
-// tell the user
+        // tell the user
         echo json_encode(array("message" => "Unable to create advertiser."));
     }
 }
