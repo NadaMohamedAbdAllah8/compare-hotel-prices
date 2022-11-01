@@ -38,7 +38,6 @@ if ($num > 0) {
         $advertiser_item = array(
             "id" => $id,
             "name" => $name,
-            //"description" => html_entity_decode($description),
             "url" => $url,
             "method" => $method,
         );
