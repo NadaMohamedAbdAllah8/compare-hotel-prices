@@ -1,4 +1,5 @@
 <?php
+namespace MyApp\Objects\Advertiser;
 
 class Advertiser
 {

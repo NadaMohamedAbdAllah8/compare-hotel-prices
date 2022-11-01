@@ -1,4 +1,10 @@
 <?php
+
+namespace MyApp\Advertiser\Create;
+
+use MyApp\Config\Database\Database;
+use MyApp\Objects\Advertiser\Advertiser;
+
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");

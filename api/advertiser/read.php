@@ -1,4 +1,10 @@
 <?php
+namespace MyApp\Advertiser\Read;
+
+use MyApp\Config\Database\Database;
+use MyApp\Objects\Advertiser\Advertiser as AdvertiserAdvertiser;
+use PDO;
+
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -13,7 +19,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$advertiser = new Advertiser($db);
+$advertiser = new AdvertiserAdvertiser($db);
 
 // query advertisers
 $stmt = $advertiser->read();
