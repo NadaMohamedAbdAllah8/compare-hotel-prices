@@ -28,8 +28,6 @@ class Advertiser
         $query = "SELECT 'id', 'name', 'url', 'method'  FROM " . $this->table_name .
             "  ORDER BY created DESC";
 
-        echo ($query);
-
         // prepare query statement
         $stmt = $this->conn->prepare($query);
 
