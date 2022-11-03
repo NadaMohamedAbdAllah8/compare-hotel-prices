@@ -1,5 +1,5 @@
 <?php
-namespace Api\Objects;
+namespace Src\Objects;
 
 interface AdvertiserInterface
 {

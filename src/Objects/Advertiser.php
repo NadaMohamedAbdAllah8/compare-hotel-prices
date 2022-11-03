@@ -1,7 +1,7 @@
 <?php
-namespace Api\Objects;
+namespace Src\Objects;
 
-use Api\Objects\AdvertiserInterface;
+use Src\Objects\AdvertiserInterface;
 
 class Advertiser implements AdvertiserInterface
 {

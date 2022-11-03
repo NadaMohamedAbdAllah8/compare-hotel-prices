@@ -1,8 +1,8 @@
 <?php
-namespace Api\Advertiser;
+namespace Src\RoomTaxes;
 
-use Api\Config\Database;
-use Api\Objects\Advertiser;
+use Src\Config\Database;
+use Src\Objects\Advertiser;
 
 require_once '../../vendor/autoload.php';
 

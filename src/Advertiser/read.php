@@ -1,10 +1,10 @@
 <?php
 
-namespace Api\Advertiser;
+namespace Src\Advertiser;
 
-use Api\Config\Database;
-use Api\Objects\Advertiser;
 use PDO;
+use Src\Config\Database;
+use Src\Objects\Advertiser;
 
 require_once '../../vendor/autoload.php';
 

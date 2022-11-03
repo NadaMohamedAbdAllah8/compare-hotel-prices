@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Config;
+namespace Src\Config;
 
 use PDO;
 use PDOException;
