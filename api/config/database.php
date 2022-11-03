@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\Config\Database;
+namespace Api\Config\Database;
 
 use PDO;
 use PDOException;

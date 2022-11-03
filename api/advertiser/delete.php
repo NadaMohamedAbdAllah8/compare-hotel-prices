@@ -1,8 +1,8 @@
 <?php
-namespace MyApp\Advertiser\Delete;
+namespace Api\Advertiser\Delete;
 
-use MyApp\Config\Database\Database;
-use MyApp\Objects\Advertiser\Advertiser;
+use Api\Config\Database\Database;
+use Api\Objects\Advertiser\Advertiser;
 
 // required headers
 header("Access-Control-Allow-Origin: *");

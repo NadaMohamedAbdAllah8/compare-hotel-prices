@@ -1,5 +1,5 @@
 <?php
-namespace MyApp\Objects\Advertiser;
+namespace Api\Objects\Advertiser;
 
 class Advertiser
 {

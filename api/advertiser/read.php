@@ -1,8 +1,8 @@
 <?php
-namespace MyApp\Advertiser\Read;
+namespace Api\Advertiser\Read;
 
-use MyApp\Config\Database\Database;
-use MyApp\Objects\Advertiser\Advertiser as AdvertiserAdvertiser;
+use Api\Config\Database\Database;
+use Api\Objects\Advertiser\Advertiser as AdvertiserAdvertiser;
 use PDO;
 
 // required headers

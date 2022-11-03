@@ -1,9 +1,9 @@
 <?php
 
-namespace MyApp\Advertiser\Create;
+namespace Api\Advertiser\Create;
 
-use MyApp\Config\Database\Database;
-use MyApp\Objects\Advertiser\Advertiser;
+use Api\Config\Database\Database;
+use Api\Objects\Advertiser\Advertiser;
 
 // required headers
 header("Access-Control-Allow-Origin: *");
