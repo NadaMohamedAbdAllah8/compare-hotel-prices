@@ -2,7 +2,7 @@
 namespace Src\RoomTaxes;
 
 use Src\Config\Database;
-use Src\Objects\Advertiser;
+use Src\Objects\RoomTaxes;
 
 require_once '../../vendor/autoload.php';
 
@@ -20,7 +20,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // prepare advertiser object
-$advertiser = new Advertiser($db);
+$advertiser = new RoomTaxes($db);
 
 // get advertiser id
 //$data = json_decode(file_get_contents("php://input"));
@@ -37,7 +37,7 @@ if ($advertiser->delete()) {
     http_response_code(200);
 
     // tell the user
-    echo json_encode(array("message" => "Advertiser was deleted."));
+    echo json_encode(array("message" => "RoomTaxes was deleted."));
 }
 
 // if unable to delete the advertiser
