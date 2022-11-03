@@ -3,7 +3,7 @@
 namespace Src\Room;
 
 use Src\Config\Database;
-use Src\Objects\Advertiser;
+use Src\Objects\Room;
 
 require_once '../../vendor/autoload.php';
 
@@ -17,41 +17,45 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 $database = new Database();
 $db = $database->getConnection();
 
-$advertiser = new Advertiser($db);
+$room = new Room($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
 // make sure data is not empty
 if (
-    !empty($data->url) &&
-    !empty($data->method)
+    !empty($data->code) &&
+    !empty($data->hotel_id) &&
+    !empty($data->subtotal) &&
+    !empty($data->total)
 ) {
 
-    // set advertiser property values
-    $advertiser->name = $data->name ?? " ";
-    $advertiser->url = $data->url;
-    $advertiser->method = $data->method;
-    $advertiser->created = date('Y-m-d H:i:s');
+    // set room property values
+    $room->name = $data->name ?? " ";
+    $room->code = $data->code;
+    $room->hotel_id = $data->hotel_id;
+    $room->subtotal = $data->subtotal;
+    $room->total = $data->total;
+    $room->created = date('Y-m-d H:i:s');
 
-    // create the advertiser
-    if ($advertiser->create()) {
+    // create the room
+    if ($room->create()) {
 
         // set response code - 201 created
         http_response_code(201);
 
         // tell the user
-        echo json_encode(array("message" => "Advertiser was created."));
+        echo json_encode(array("message" => "Room was created."));
     }
 
-    // if unable to create the advertiser, tell the user
+    // if unable to create the room, tell the user
     else {
 
         // set response code - 503 service unavailable
         http_response_code(503);
 
         // tell the user
-        echo json_encode(array("message" => "Unable to create advertiser."));
+        echo json_encode(array("message" => "Unable to create room."));
     }
 }
 
@@ -62,5 +66,5 @@ else {
     http_response_code(400);
 
 // tell the user
-    echo json_encode(array("message" => "Unable to create advertiser. Data is incomplete."));
+    echo json_encode(array("message" => "Unable to create room. Data is incomplete."));
 }
