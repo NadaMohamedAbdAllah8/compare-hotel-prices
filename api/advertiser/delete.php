@@ -6,7 +6,7 @@ use Api\Objects\Advertiser;
 
 require_once '../../vendor/autoload.php';
 
-var_dump($_POST);
+// var_dump($_POST);
 
 // required headers
 header("Access-Control-Allow-Origin: *");
@@ -23,10 +23,12 @@ $db = $database->getConnection();
 $advertiser = new Advertiser($db);
 
 // get advertiser id
-$data = json_decode(file_get_contents("php://input"));
-//$data=$_POST;
+//$data = json_decode(file_get_contents("php://input"));
+// reading data from form data
+$data = $_POST;
+
 // set advertiser id to be deleted
-$advertiser->id = $data->id;
+$advertiser->id = $data['id'];
 
 // delete the advertiser
 if ($advertiser->delete()) {
