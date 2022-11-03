@@ -1,9 +1,11 @@
 <?php
 
-namespace Api\Advertiser\Create;
+namespace Api\Advertiser;
 
-use Api\Config\Database\Database;
-use Api\Objects\Advertiser\Advertiser;
+use Api\Config\Database;
+use Api\Objects\Advertiser;
+
+require_once '../../vendor/autoload.php';
 
 // required headers
 header("Access-Control-Allow-Origin: *");
@@ -12,12 +14,6 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-// get database connection
-include_once '../config/database.php';
-
-// instantiate advertiser object
-include_once '../objects/advertiser.php';
-
 $database = new Database();
 $db = $database->getConnection();
 
@@ -25,19 +21,15 @@ $advertiser = new Advertiser($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
-// var_dump($_POST);
-
-// var_dump($data);
 
 // make sure data is not empty
 if (
-    !empty($data->name) &&
     !empty($data->url) &&
     !empty($data->method)
 ) {
 
     // set advertiser property values
-    $advertiser->name = $data->name;
+    $advertiser->name = $data->name ?? " ";
     $advertiser->url = $data->url;
     $advertiser->method = $data->method;
     $advertiser->created = date('Y-m-d H:i:s');

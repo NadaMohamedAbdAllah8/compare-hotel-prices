@@ -1,8 +1,12 @@
 <?php
-namespace Api\Advertiser\Delete;
+namespace Api\Advertiser;
 
-use Api\Config\Database\Database;
-use Api\Objects\Advertiser\Advertiser;
+use Api\Config\Database;
+use Api\Objects\Advertiser;
+
+require_once '../../vendor/autoload.php';
+
+var_dump($_POST);
 
 // required headers
 header("Access-Control-Allow-Origin: *");
@@ -10,10 +14,6 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-
-// include database and object file
-include_once '../config/database.php';
-include_once '../objects/advertiser.php';
 
 // get database connection
 $database = new Database();
@@ -24,7 +24,7 @@ $advertiser = new Advertiser($db);
 
 // get advertiser id
 $data = json_decode(file_get_contents("php://input"));
-
+//$data=$_POST;
 // set advertiser id to be deleted
 $advertiser->id = $data->id;
 

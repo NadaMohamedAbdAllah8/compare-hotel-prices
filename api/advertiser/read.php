@@ -1,17 +1,18 @@
 <?php
-namespace Api\Advertiser\Read;
 
-use Api\Config\Database\Database;
-use Api\Objects\Advertiser\Advertiser as AdvertiserAdvertiser;
+namespace Api\Advertiser;
+
+use Api\Config\Database;
+use Api\Objects\Advertiser;
 use PDO;
+
+require_once '../../vendor/autoload.php';
+
+// require __DIR__ . "../vendor/autoload.php";
 
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-
-// include database and object files
-include_once '../config/database.php';
-include_once '../objects/advertiser.php';
 
 // instantiate database and advertiser object
 $database = new Database();
@@ -19,7 +20,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$advertiser = new AdvertiserAdvertiser($db);
+$advertiser = new Advertiser($db);
 
 // query advertisers
 $stmt = $advertiser->read();

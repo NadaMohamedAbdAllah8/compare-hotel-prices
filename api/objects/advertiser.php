@@ -1,7 +1,9 @@
 <?php
-namespace Api\Objects\Advertiser;
+namespace Api\Objects;
 
-class Advertiser
+use Api\Objects\AdvertiserInterface;
+
+class Advertiser implements AdvertiserInterface
 {
 
     // database connection and table name
