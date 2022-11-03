@@ -1,9 +1,9 @@
 <?php
 
-namespace Src\Advertiser;
+namespace Src\Hotel;
 
 use Src\Config\Database;
-use Src\Objects\Advertiser;
+use Src\Objects\Hotel;
 
 require_once '../../vendor/autoload.php';
 
@@ -17,41 +17,41 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 $database = new Database();
 $db = $database->getConnection();
 
-$advertiser = new Advertiser($db);
+$hotel = new Hotel($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
 // make sure data is not empty
 if (
-    !empty($data->url) &&
-    !empty($data->method)
+    !empty($data->name) &&
+    !empty($data->advertiser_id)
 ) {
 
-    // set advertiser property values
-    $advertiser->name = $data->name ?? " ";
-    $advertiser->url = $data->url;
-    $advertiser->method = $data->method;
-    $advertiser->created = date('Y-m-d H:i:s');
+    // set hotel property values
+    $hotel->stars = $data->stars ?? " ";
+    $hotel->name = $data->name;
+    $hotel->advertiser_id = $data->advertiser_id;
+    $hotel->created = date('Y-m-d H:i:s');
 
-    // create the advertiser
-    if ($advertiser->create()) {
+    // create the hotel
+    if ($hotel->create()) {
 
         // set response code - 201 created
         http_response_code(201);
 
         // tell the user
-        echo json_encode(array("message" => "Advertiser was created."));
+        echo json_encode(array("message" => "Hotel was created."));
     }
 
-    // if unable to create the advertiser, tell the user
+    // if unable to create the hotel, tell the user
     else {
 
         // set response code - 503 service unavailable
         http_response_code(503);
 
         // tell the user
-        echo json_encode(array("message" => "Unable to create advertiser."));
+        echo json_encode(array("message" => "Unable to create hotel."));
     }
 }
 
@@ -62,5 +62,5 @@ else {
     http_response_code(400);
 
 // tell the user
-    echo json_encode(array("message" => "Unable to create advertiser. Data is incomplete."));
+    echo json_encode(array("message" => "Unable to create hotel. Data is incomplete."));
 }

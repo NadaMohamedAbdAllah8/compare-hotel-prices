@@ -1,8 +1,8 @@
 <?php
-namespace Src\Advertiser;
+namespace Src\Hotel;
 
 use Src\Config\Database;
-use Src\Objects\Advertiser;
+use Src\Objects\Hotel;
 
 require_once '../../vendor/autoload.php';
 
@@ -19,33 +19,33 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 $database = new Database();
 $db = $database->getConnection();
 
-// prepare advertiser object
-$advertiser = new Advertiser($db);
+// prepare hotel object
+$hotel = new Hotel($db);
 
-// get advertiser id
+// get hotel id
 //$data = json_decode(file_get_contents("php://input"));
 // reading data from form data
 $data = $_POST;
 
-// set advertiser id to be deleted
-$advertiser->id = $data['id'];
+// set hotel id to be deleted
+$hotel->id = $data['id'];
 
-// delete the advertiser
-if ($advertiser->delete()) {
+// delete the hotel
+if ($hotel->delete()) {
 
     // set response code - 200 ok
     http_response_code(200);
 
     // tell the user
-    echo json_encode(array("message" => "Advertiser was deleted."));
+    echo json_encode(array("message" => "Hotel was deleted."));
 }
 
-// if unable to delete the advertiser
+// if unable to delete the hotel
 else {
 
     // set response code - 503 service unavailable
     http_response_code(503);
 
     // tell the user
-    echo json_encode(array("message" => "Unable to delete advertiser."));
+    echo json_encode(array("message" => "Unable to delete hotel."));
 }
