@@ -1,9 +1,9 @@
 <?php
 
-namespace Src\RoomTaxes;
+namespace App\RoomTaxes;
 
-use Src\Config\Database;
-use Src\Objects\RoomTaxes;
+use App\Config\Database;
+use App\Objects\RoomTaxes;
 
 require_once '../../vendor/autoload.php';
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Src\Hotel;
+namespace App\Hotel;
 
-use Src\Config\Database;
-use Src\Objects\Hotel;
+use App\Config\Database;
+use App\Objects\Hotel;
 
 require_once '../../vendor/autoload.php';
 

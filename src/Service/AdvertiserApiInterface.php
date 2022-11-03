@@ -1,9 +1,11 @@
 <?php
-namespace Src\Service;
+namespace App\Service;
 
-interface AdvertiserSrcInterface
+require_once '../../vendor/autoload.php';
+
+interface AdvertiserApiInterface
 {
 
     // read advertisers
-    public function callSrc();
+    public function callApi($url, $method);
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Src\Objects;
+namespace App\Objects;
 
 class Hotel
 {

@@ -1,8 +1,8 @@
 <?php
-namespace Src\Advertiser;
+namespace App\Advertiser;
 
-use Src\Config\Database;
-use Src\Objects\Advertiser;
+use App\Config\Database;
+use App\Objects\Advertiser;
 
 require_once '../../vendor/autoload.php';
 
@@ -23,7 +23,8 @@ $db = $database->getConnection();
 $advertiser = new Advertiser($db);
 
 // get advertiser id
-//$data = json_decode(file_get_contents("php://input"));
+// $data = json_decode(file_get_contents("php://input"));
+
 // reading data from form data
 $data = $_POST;
 

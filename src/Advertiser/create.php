@@ -1,9 +1,9 @@
 <?php
 
-namespace Src\Advertiser;
+namespace App\Advertiser;
 
-use Src\Config\Database;
-use Src\Objects\Advertiser;
+use App\Config\Database;
+use App\Objects\Advertiser;
 
 require_once '../../vendor/autoload.php';
 

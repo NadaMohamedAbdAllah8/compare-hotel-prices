@@ -1,7 +1,8 @@
 <?php
-namespace Src\Objects;
+namespace App\Objects;
 
-use Src\Objects\AdvertiserInterface;
+use App\Objects\AdvertiserInterface;
+use PDO;
 
 class Advertiser implements AdvertiserInterface
 {
@@ -101,4 +102,47 @@ class Advertiser implements AdvertiserInterface
         return false;
     }
 
+    // readOne advertisers
+    public function readOne()
+    {
+        // select all query
+        $query = "SELECT id, name, url, method  FROM " . $this->table_name .
+            "  where id = ?";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->id = htmlspecialchars(strip_tags($this->id));
+
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->id);
+
+        // execute query
+        if ($stmt->execute()) {
+            // var_dump($stmt->execute()); bool
+            //echo 'using PDO::FETCH_ASSOC ';
+            // var_dump($stmt->fetch(PDO::FETCH_ASSOC)); //false
+            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                extract($row);
+                return $row;
+
+            } else {
+                // echo 'FETCH_ASSOC is false                          ';
+                return false;
+
+            }
+
+        }
+
+        return false;
+
+    }
+
+    // get data from API
+//     public function getDataFromAPI()
+//     {
+// $Advertiser1Data=new Advertiser1Data()
+//     }
 }

@@ -1,7 +1,9 @@
 <?php
-namespace Src\Service;
+namespace App\Service;
 
 use Api\Objects\AdvertiserApiInterface;
+
+require_once '../../vendor/autoload.php';
 
 /**This class will execute class on API that have a similar
  * data for API 2,

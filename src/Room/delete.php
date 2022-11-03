@@ -1,8 +1,8 @@
 <?php
-namespace Src\Room;
+namespace App\Room;
 
-use Src\Config\Database;
-use Src\Objects\Room;
+use App\Config\Database;
+use App\Objects\Room;
 
 require_once '../../vendor/autoload.php';
 

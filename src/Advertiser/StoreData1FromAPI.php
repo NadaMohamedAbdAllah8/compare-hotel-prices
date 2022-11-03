@@ -1,12 +1,12 @@
 <?php
-namespace App\Hotel;
+namespace App\Advertiser;
 
 use App\Config\Database;
-use App\Objects\Hotel;
+use App\Objects\Advertiser;
+use App\Service\AdvertiserApi;
+use App\Service\AdvertiserData1;
 
 require_once '../../vendor/autoload.php';
-
-// var_dump($_POST);
 
 // required headers
 header("Access-Control-Allow-Origin: *");
@@ -17,35 +17,45 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // get database connection
 $database = new Database();
+
 $db = $database->getConnection();
 
-// prepare hotel object
-$hotel = new Hotel($db);
+// prepare advertiser object
+$advertiser = new Advertiser($db);
 
-// get hotel id
+// get advertiser id
 //$data = json_decode(file_get_contents("php://input"));
+
 // reading data from form data
 $data = $_POST;
 
-// set hotel id to be deleted
-$hotel->id = $data['id'];
+// set advertiser id to be stored
+$advertiser->id = $data['id'];
 
-// delete the hotel
-if ($hotel->delete()) {
+// store the advertiser
+$read_advertiser = $advertiser->readOne();
+
+if ($read_advertiser) {
+
+    $advertiser_api = new AdvertiserApi();
+
+    $advertiser_1_data = new AdvertiserData1($advertiser_api, $read_advertiser);
+
+    $advertiser_1_data->storeData();
 
     // set response code - 200 ok
     http_response_code(200);
 
     // tell the user
-    echo json_encode(array("message" => "Hotel was deleted."));
+    echo json_encode(array("message" => "Advertiser data was stored."));
 }
 
-// if unable to delete the hotel
+// if unable to store the advertiser
 else {
 
     // set response code - 503 service unavailable
     http_response_code(503);
 
     // tell the user
-    echo json_encode(array("message" => "Unable to delete hotel."));
+    echo json_encode(array("message" => "Unable to read advertiser."));
 }
