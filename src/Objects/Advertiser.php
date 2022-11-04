@@ -121,9 +121,7 @@ class Advertiser implements AdvertiserInterface, DatabaseModel
 
         // execute query
         if ($stmt->execute()) {
-            // var_dump($stmt->execute()); bool
-            //echo 'using PDO::FETCH_ASSOC ';
-            // var_dump($stmt->fetch(PDO::FETCH_ASSOC)); //false
+
             if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
                 extract($row);

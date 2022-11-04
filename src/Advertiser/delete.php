@@ -6,7 +6,6 @@ use App\Objects\Advertiser;
 
 require_once '../../vendor/autoload.php';
 
-// var_dump($_POST);
 
 // required headers
 header("Access-Control-Allow-Origin: *");

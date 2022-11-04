@@ -8,7 +8,7 @@ class RoomTaxes implements DatabaseModel
 
     // database connection and table name
     private $conn;
-    private $table_name = "hotels";
+    private $table_name = "room_taxes";
 
     // object properties
     public $id;
@@ -47,7 +47,7 @@ class RoomTaxes implements DatabaseModel
 
         // query to insert record
         $query = "INSERT INTO
-                " . $this->table_currency . "
+                " . $this->table_name . "
             SET
                 currency=:currency, room_id=:room_id, type=:type,amount=:amount,  created=:created, modified=:modified";
 
@@ -66,13 +66,13 @@ class RoomTaxes implements DatabaseModel
         $stmt->bindParam(":currency", $this->currency);
         $stmt->bindParam(":type", $this->type);
         $stmt->bindParam(':room_id', $this->room_id);
-        $stmt->bindParam(":amount", $this->type);
+        $stmt->bindParam(":amount", $this->amount);
         $stmt->bindParam(":created", $this->created);
         $stmt->bindParam(":modified", $this->modified);
 
         // execute query
         if ($stmt->execute()) {
-            return true;
+            return $this->conn->lastInsertId();
         }
 
         return false;
@@ -84,7 +84,7 @@ class RoomTaxes implements DatabaseModel
     {
 
         // delete query
-        $query = "DELETE FROM " . $this->table_currency . " WHERE id = ?";
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
 
         // prepare query
         $stmt = $this->conn->prepare($query);

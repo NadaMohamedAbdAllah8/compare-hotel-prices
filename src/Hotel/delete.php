@@ -6,8 +6,6 @@ use App\Objects\Hotel;
 
 require_once '../../vendor/autoload.php';
 
-// var_dump($_POST);
-
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");

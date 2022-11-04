@@ -67,9 +67,9 @@ class Hotel implements DatabaseModel
         $stmt->bindParam(":created", $this->created);
         $stmt->bindParam(":modified", $this->modified);
 
-        // execute query
+               // execute query
         if ($stmt->execute()) {
-            return true;
+            return $this->conn->lastInsertId();
         }
 
         return false;

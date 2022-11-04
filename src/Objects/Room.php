@@ -8,7 +8,7 @@ class Room implements DatabaseModel
 
     // database connection and table name
     private $conn;
-    private $table_name = "hotels";
+    private $table_name = "rooms";
 
     // object properties
     public $id;
@@ -45,12 +45,11 @@ class Room implements DatabaseModel
     // create room
     public function create()
     {
-
         // query to insert record
         $query = "INSERT INTO
                 " . $this->table_name . "
             SET
-                name=:name, hotel_id=:hotel_id, code=:code,subtotal=:subtotal,total=:total,  created=:created, modified=:modified";
+                name=:name, hotel_id=:hotel_id, code=:code,subtotal=:subtotal,total=:total, created=:created, modified=:modified";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -68,14 +67,14 @@ class Room implements DatabaseModel
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":code", $this->code);
         $stmt->bindParam(':hotel_id', $this->hotel_id);
-        $stmt->bindParam(":subtotal", $this->code);
-        $stmt->bindParam(":total", $this->code);
+        $stmt->bindParam(":subtotal", $this->subtotal);
+        $stmt->bindParam(":total", $this->total);
         $stmt->bindParam(":created", $this->created);
         $stmt->bindParam(":modified", $this->modified);
 
         // execute query
         if ($stmt->execute()) {
-            return true;
+            return $this->conn->lastInsertId();
         }
 
         return false;

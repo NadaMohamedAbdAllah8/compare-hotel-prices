@@ -12,23 +12,26 @@ use GuzzleHttp\Client as Client;
 class AdvertiserApi implements AdvertiserApiInterface
 {
 
-    // read advertisers
+    // read advertisers' data from API
+    // returns the data, or false
     public function callApi($url, $method)
-    {echo $url;
+    {
         // call the Guzzle API
-
-        $data = "data from the call";
 
         $client = new Client();
 
         $res = $client->request('GET', $url);
 
-        echo $res->getStatusCode();
-// "200"
-        echo $res->getHeader('content-type')[0];
+//         echo 'res status code=' . $res->getStatusCode();
+//  "200"
+//         echo 'content type=' . $res->getHeader('content-type')[0];
 // 'application/json; charset=utf8'
-        echo $res->getBody();
 
-        return $data;
+        if ($res->getStatusCode() != 200) {
+            return false;
+        }
+
+        return $res->getBody();
+
     }
 }
