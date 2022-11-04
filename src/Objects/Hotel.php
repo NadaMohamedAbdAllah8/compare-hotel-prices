@@ -2,6 +2,7 @@
 namespace App\Objects;
 
 use App\Objects\DatabaseModel;
+use PDO;
 
 class Hotel implements DatabaseModel
 {
@@ -40,6 +41,57 @@ class Hotel implements DatabaseModel
         return $stmt;
     }
 
+    // select hotels based on advertiser id
+    public function readWhereAdvertiser($advertiser_id)
+    {
+        // select all query
+        $query = "SELECT id, name, advertiser_id, stars  FROM " . $this->table_name .
+            "  where advertiser_id = ?";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->advertiser_id = htmlspecialchars(strip_tags($this->advertiser_id));
+
+        // bind id of record to delete
+        $stmt->bindParam(1, $advertiser_id);
+
+        // execute query
+        if ($stmt->execute()) {
+
+            $num = $stmt->rowCount();
+
+// check if more than 0 record found
+            if ($num > 0) {
+
+                // hotels array
+                $hotels_arr = array();
+
+                // retrieve our table contents
+                // fetch() is faster than fetchAll()
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    // extract row
+                    // this will make $row['name'] to
+                    // just $name only
+                    extract($row);
+
+                    $hotel_item = array(
+                        "id" => $id,
+                        "name" => $name,
+                    );
+
+                    array_push($hotels_arr, $hotel_item);
+                }
+
+                return $hotels_arr;
+
+            }
+
+        }
+        return false;
+    }
+
     // create hotel
     public function create()
     {
@@ -67,7 +119,7 @@ class Hotel implements DatabaseModel
         $stmt->bindParam(":created", $this->created);
         $stmt->bindParam(":modified", $this->modified);
 
-               // execute query
+        // execute query
         if ($stmt->execute()) {
             return $this->conn->lastInsertId();
         }
