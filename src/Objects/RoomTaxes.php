@@ -1,7 +1,9 @@
 <?php
 namespace App\Objects;
 
-class RoomTaxes
+use DatabaseModel;
+
+class RoomTaxes implements DatabaseModel
 {
 
     // database connection and table name
@@ -23,7 +25,23 @@ class RoomTaxes
         $this->conn = $db;
     }
 
-    // create advertiser
+    // read rooms
+    public function read()
+    {
+        // select all query
+        $query = "SELECT id, room_id, currency, type, amount  FROM " . $this->table_name .
+            "  ORDER BY created DESC";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    // create room taxes
     public function create()
     {
 
@@ -61,7 +79,7 @@ class RoomTaxes
 
     }
 
-    // delete the advertiser
+    // delete the room taxes
     public function delete()
     {
 
