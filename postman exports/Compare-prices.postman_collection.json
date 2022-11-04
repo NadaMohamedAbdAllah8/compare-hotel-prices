@@ -52,12 +52,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{url}}Advertiser/StoreData1FromAPI.php",
+					"raw": "{{url}}Advertiser/storeData1FromAPI.php",
 					"host": [
 						"{{url}}Advertiser"
 					],
 					"path": [
-						"StoreData1FromAPI.php"
+						"storeData1FromAPI.php"
 					],
 					"query": [
 						{
@@ -93,12 +93,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{url}}Advertiser/StoreData2FromAPI.php",
+					"raw": "{{url}}Advertiser/storeData2FromAPI.php",
 					"host": [
 						"{{url}}Advertiser"
 					],
 					"path": [
-						"StoreData2FromAPI.php"
+						"storeData2FromAPI.php"
 					]
 				}
 			},
@@ -132,12 +132,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{url}}Advertiser/ComparePrices.php",
+					"raw": "{{url}}Advertiser/comparePrices.php",
 					"host": [
 						"{{url}}Advertiser"
 					],
 					"path": [
-						"ComparePrices.php"
+						"comparePrices.php"
 					]
 				}
 			},
