@@ -75,12 +75,14 @@ for ($i = 0; $i < $advertisers_length; $i++) {
 
         if (in_array($hotels[$h]['name'], $inserted_hotels_names)) {
             for ($r = 0; $r < $rooms_length; $r++) {
-                // compare
-                if (array_key_exists($rooms[$r]['code'], $rooms_hash_table)) {
-                    // compare the totals
-                    $room_code = $rooms[$r]['code'];
+                $room_code = $rooms[$r]['code'];
 
-                    $existing_room_info = $rooms_hash_table[$room_code];
+                $existing_room_info = $rooms_hash_table[$room_code];
+
+                // compare if the room's code is already inserted for the same hotel
+                if (array_key_exists($rooms[$r]['code'], $rooms_hash_table)
+                    && $existing_room_info['hotel_name'] == $hotels[$h]['name']) {
+                    // compare the totals
                     $new_room_info = $rooms[$r];
 
                     // echo 'code=' . $new_room_info['code'] . '    ';
@@ -90,14 +92,18 @@ for ($i = 0; $i < $advertisers_length; $i++) {
                     // replace
                     if ($new_room_info['total'] < $existing_room_info['total']) {
                         $rooms_hash_table[$rooms[$r]['code']] = [
-                            'total' => $new_room_info['total'], 'room_id' => $new_room_info['id']];
+                            'total' => $new_room_info['total'],
+                            'room_id' => $new_room_info['id'],
+                            'hotel_name' => $hotels[$h]['name']];
                     }
 
                 } else {
                     // insert the room
 
                     $rooms_hash_table[$rooms[$r]['code']] = [
-                        'total' => $rooms[$r]['total'], 'room_id' => $rooms[$r]['id']];
+                        'total' => $rooms[$r]['total'],
+                        'room_id' => $rooms[$r]['id'],
+                        'hotel_name' => $hotels[$h]['name']];
                 }
             }
 
@@ -109,7 +115,9 @@ for ($i = 0; $i < $advertisers_length; $i++) {
             for ($r = 0; $r < $rooms_length; $r++) {
 
                 $rooms_hash_table[$rooms[$r]['code']] = [
-                    'total' => $rooms[$r]['total'], 'room_id' => $rooms[$r]['id']];
+                    'total' => $rooms[$r]['total'],
+                    'room_id' => $rooms[$r]['id'],
+                    'hotel_name' => $hotels[$h]['name']];
             }
 
         }
