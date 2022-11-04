@@ -1,7 +1,9 @@
 <?php
 namespace App\Objects;
 
-class Room
+use DatabaseModel;
+
+class Room implements DatabaseModel
 {
 
     // database connection and table name
@@ -24,7 +26,23 @@ class Room
         $this->conn = $db;
     }
 
-    // create advertiser
+    // read rooms
+    public function read()
+    {
+        // select all query
+        $query = "SELECT id, name, code, hotel_id, subtotal, total  FROM " . $this->table_name .
+            "  ORDER BY created DESC";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    // create room
     public function create()
     {
 
@@ -64,7 +82,7 @@ class Room
 
     }
 
-    // delete the advertiser
+    // delete the room
     public function delete()
     {
 
