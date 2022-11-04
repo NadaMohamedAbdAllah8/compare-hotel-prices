@@ -10,3 +10,40 @@
    a. Create advertiser
    b. Run StoreData1FromAPI, or StoreData2FromAPI to store the API data to the database
    c. Run ComparePrices to return a list of all the hotel rooms, without duplication, sorted from cheapest to expensive
+
+Note: use StoreData1FromAPI to store data with the following structure
+{
+"hotels": [ {
+"name": "Hotel A",
+"stars": 4,
+"rooms": [ {
+"code": "DBL-TWN",
+"net_price": "140.00",
+"taxes": {
+"amount": "12.00",
+"currency": "EUR",
+"type": "TAXESANDFEES"
+},
+"total": "152.00"
+} ]
+} ]
+}
+
+and use StoreData2FromAPI to store data with the following structure
+{
+"hotels": [ {
+"name": "Hotel A",
+"stars": 4,
+"rooms": [ {
+"code": "DBL-TWN",
+"name": "Double or Twin SUPERIOR",
+"net_rate": "143.00",
+"taxes": [ {
+"amount": "10.00",
+"currency": "EUR",
+"type": "TAXESANDFEES"
+} ],
+"totalPrice": "153.00"
+} ]
+} ]
+}
