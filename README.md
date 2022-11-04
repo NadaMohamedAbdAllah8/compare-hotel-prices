@@ -8,7 +8,7 @@
 
 3. Use the collection to run the APIs
    a. Create advertiser
-   b. Run StoreData1FromAPI, or StoreData2FromAPI to store the API data to the database
+   b. Run StoreData1FromAPI, or StoreData2FromAPI to store the API data to the database. Both will need the advertiser id as a parameter to run
    c. Run ComparePrices to return a list of all the hotel rooms, without duplication, sorted from cheapest to expensive
 
 Note: use StoreData1FromAPI to store data with the following structure
