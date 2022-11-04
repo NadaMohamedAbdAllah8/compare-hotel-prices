@@ -23,35 +23,9 @@ $db = $database->getConnection();
 $advertiser = new Advertiser($db);
 
 // query advertisers
-$stmt = $advertiser->read();
+$advertisers_arr = $advertiser->read();
 
-$num = $stmt->rowCount();
-
-// check if more than 0 record found
-if ($num > 0) {
-
-    // advertisers array
-    $advertisers_arr = array();
-    $advertisers_arr["records"] = array();
-
-    // retrieve our table contents
-    // fetch() is faster than fetchAll()
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        // extract row
-        // this will make $row['name'] to
-        // just $name only
-        extract($row);
-
-        $advertiser_item = array(
-            "id" => $id,
-            "name" => $name,
-            "url" => $url,
-            "method" => $method,
-        );
-
-        array_push($advertisers_arr["records"], $advertiser_item);
-    }
-
+if ($advertisers_arr !== false) {
     // set response code - 200 OK
     http_response_code(200);
 
