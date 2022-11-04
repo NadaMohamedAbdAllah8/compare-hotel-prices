@@ -1,21 +1,5 @@
 <?php
 
-// solution 1
-// for each hotel get the rooms
-// insert the rooms in a hash table
-// first hotel $key=>$value room's code=>room's id
-// for the other hotels
-// search is the code in the hash table?
-// yes: compare between the new room total's and the old room's total
-// if new room's total<old room's total, then replace the old room's id
-// with the new room's id
-// no: insert the new room
-// at the end sort the hash table by the room's total
-
-// solution 2
-
-// read hotels
-
 // instantiate database and hotel object
 namespace App\Advertiser;
 
@@ -58,7 +42,8 @@ for ($i = 0; $i < $advertisers_length; $i++) {
     // initialize object
     $hotel = new Hotel($db);
 
-    // query hotels
+    // read hotels
+
     $hotels = $hotel->readWhereAdvertiser($advertisers_ids[$i]);
 
     $hotels_length = count($hotels);
@@ -84,10 +69,6 @@ for ($i = 0; $i < $advertisers_length; $i++) {
                     && $existing_room_info['hotel_name'] == $hotels[$h]['name']) {
                     // compare the totals
                     $new_room_info = $rooms[$r];
-
-                    // echo 'code=' . $new_room_info['code'] . '    ';
-                    // echo 'existing room (in hash table) total=  ' . $existing_room_info['total'];
-                    // echo '  new room total=' . $new_room_info['total'];
 
                     // replace
                     if ($new_room_info['total'] < $existing_room_info['total']) {
