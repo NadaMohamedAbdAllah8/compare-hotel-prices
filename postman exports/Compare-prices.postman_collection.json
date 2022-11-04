@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "9c5fce8b-4845-42f0-ab07-b9546a284fec",
+		"name": "Compare-prices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19948061"
+	},
+	"item": [
+		{
+			"name": "ListAdvertisers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}Advertiser/read.php",
+					"host": [
+						"{{url}}Advertiser"
+					],
+					"path": [
+						"read.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StoreData1FromAPI",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "required",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}Advertiser/StoreData1FromAPI.php",
+					"host": [
+						"{{url}}Advertiser"
+					],
+					"path": [
+						"StoreData1FromAPI.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StoreData2FromAPI",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "2",
+							"description": "required",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}Advertiser/StoreData2FromAPI.php",
+					"host": [
+						"{{url}}Advertiser"
+					],
+					"path": [
+						"StoreData2FromAPI.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ComparePrices",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id[0]",
+							"value": "2",
+							"description": "required",
+							"type": "text"
+						},
+						{
+							"key": "id[1]",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}Advertiser/ComparePrices.php",
+					"host": [
+						"{{url}}Advertiser"
+					],
+					"path": [
+						"ComparePrices.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StoreAdvertisers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"the second API\",\r\n\"url\":\"https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s2/availability\",\r\n\"method\":\"get\"}"
+				},
+				"url": {
+					"raw": "{{url}}advertiser/create.php",
+					"host": [
+						"{{url}}advertiser"
+					],
+					"path": [
+						"create.php"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "StoreAdvertisersForAPI1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"the first API\",\r\n\"url\":\"https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s1/availability\",\r\n\"method\":\"get\"}"
+						},
+						"url": {
+							"raw": "{{url}}advertiser/create.php",
+							"host": [
+								"{{url}}advertiser"
+							],
+							"path": [
+								"create.php"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "StoreAdvertisersForAPI2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"the first API\",\r\n\"url\":\"https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s2/availability\",\r\n\"method\":\"get\"}"
+						},
+						"url": {
+							"raw": "{{url}}advertiser/create.php",
+							"host": [
+								"{{url}}advertiser"
+							],
+							"path": [
+								"create.php"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "DeleteAdvertisers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "12",
+							"description": "required",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}advertiser/delete.php",
+					"host": [
+						"{{url}}advertiser"
+					],
+					"path": [
+						"delete.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
