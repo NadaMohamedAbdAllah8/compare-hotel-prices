@@ -1,7 +1,7 @@
 <?php
 namespace App\Objects;
 
-use DatabaseModel;
+use App\Objects\DatabaseModel;
 
 class RoomTaxes implements DatabaseModel
 {

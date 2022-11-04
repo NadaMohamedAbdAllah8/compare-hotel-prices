@@ -2,7 +2,7 @@
 namespace App\Objects;
 
 use App\Objects\AdvertiserInterface;
-use DatabaseModel;
+use App\Objects\DatabaseModel;
 use PDO;
 
 class Advertiser implements AdvertiserInterface, DatabaseModel

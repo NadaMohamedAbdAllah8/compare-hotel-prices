@@ -1,7 +1,7 @@
 <?php
 namespace App\Objects;
 
-use DatabaseModel;
+use App\Objects\DatabaseModel;
 
 class Hotel implements DatabaseModel
 {
