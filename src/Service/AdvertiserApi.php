@@ -1,8 +1,6 @@
 <?php
 namespace App\Service;
 
-require_once '../../vendor/autoload.php';
-
 use GuzzleHttp\Client as Client;
 
 /**This class will execute class on API that have a similar
@@ -21,11 +19,6 @@ class AdvertiserApi implements AdvertiserApiInterface
         $client = new Client();
 
         $res = $client->request('GET', $url);
-
-//         echo 'res status code=' . $res->getStatusCode();
-//  "200"
-//         echo 'content type=' . $res->getHeader('content-type')[0];
-// 'application/json; charset=utf8'
 
         if ($res->getStatusCode() != 200) {
             return false;

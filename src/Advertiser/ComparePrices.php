@@ -6,7 +6,6 @@ namespace App\Advertiser;
 use App\Config\Database;
 use App\Objects\Hotel;
 use App\Objects\Room;
-use PDO;
 
 require_once '../../vendor/autoload.php';
 

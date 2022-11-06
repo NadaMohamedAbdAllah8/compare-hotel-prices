@@ -53,12 +53,10 @@ if (
         // tell the user
         echo json_encode(array("message" => "Unable to create advertiser."));
     }
-}
+} else {
+    // tell the user data is incomplete
 
-// tell the user data is incomplete
-else {
-
-// set response code - 400 bad request
+    // set response code - 400 bad request
     http_response_code(400);
 
 // tell the user

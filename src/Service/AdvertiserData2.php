@@ -2,7 +2,6 @@
 namespace App\Service;
 
 use App\Config\Database;
-use App\Objects\Advertiser;
 use App\Objects\Hotel;
 use App\Objects\Room;
 use App\Objects\RoomTaxes;
@@ -49,7 +48,7 @@ class AdvertiserData2 implements AdvertiserDataInterface
 
     public function storeData()
     {
-        // call the function that will be the data in AdvertiserApi
+        // get data from API
         $data = $this->advertiser_2_api->callApi($this->advertiser['url'],
             $this->advertiser['method']);
 
@@ -62,8 +61,6 @@ class AdvertiserData2 implements AdvertiserDataInterface
         // store the data in the database
         $hotels_length = count($decoded_data->hotels);
 
-        // echo $hotels_length;
-
         $hotels = $decoded_data->hotels;
 
         $database = new Database();
@@ -73,7 +70,7 @@ class AdvertiserData2 implements AdvertiserDataInterface
         $db->beginTransaction();
 
         for ($h = 0; $h < $hotels_length; $h++) {
-            // create hotel
+            // store hotel
             $hotel_id = $this->storeHotel($db, $hotels[$h]);
 
             if ($hotel_id === false) {
@@ -81,17 +78,15 @@ class AdvertiserData2 implements AdvertiserDataInterface
 
                 // throw exception
                 throw new Exception('Exception! Could not create hotel', 100);
-                // throw new CannotCreateException('Hotel');
-                //  return false;
             }
 
-            // create rooms
+            // store rooms
 
             $hotel_rooms = $hotels[$h]->rooms;
             $hotel_rooms_length = count($hotel_rooms);
 
             for ($r = 0; $r < $hotel_rooms_length; $r++) {
-                // create hotel
+
                 $room_id = $this->storeRoom($db, $hotel_rooms[$r], $hotel_id);
 
                 if ($room_id === false) {
@@ -102,7 +97,7 @@ class AdvertiserData2 implements AdvertiserDataInterface
 
                 }
 
-// create room taxes
+                // store room taxes
 
                 $room_taxes = $hotel_rooms[$r]->taxes;
 
@@ -113,7 +108,7 @@ class AdvertiserData2 implements AdvertiserDataInterface
                 $room_taxes_length = count($room_taxes);
 
                 for ($t = 0; $t < $room_taxes_length; $t++) {
-                    // create hotel
+
                     $room_taxes_id = $this->storeRoomTaxes($db, $room_taxes[$t], $room_id);
 
                     if ($room_taxes_id === false) {
@@ -136,10 +131,9 @@ class AdvertiserData2 implements AdvertiserDataInterface
 
     private function storeHotel($db, $hotel_data)
     {
-        // create hotel
         $hotel = new Hotel($db);
 
-// set hotel property values
+        // set hotel property values
 
         $hotel->stars = $hotel_data->stars;
         $hotel->name = $hotel_data->name;
@@ -148,7 +142,6 @@ class AdvertiserData2 implements AdvertiserDataInterface
 
         $hotel_id = $hotel->create();
 
-// create the hotel
         if ($hotel_id !== false) {
             return $hotel_id;
         }
@@ -161,7 +154,6 @@ class AdvertiserData2 implements AdvertiserDataInterface
         // create room
         $room = new Room($db);
 
-        // set room property values
         $room->name = $room_data->name ?? " ";
         $room->code = $room_data->code;
         $room->hotel_id = $hotel_id;
@@ -171,7 +163,6 @@ class AdvertiserData2 implements AdvertiserDataInterface
 
         $room_id = $room->create();
 
-// create the room
         if ($room_id !== false) {
             return $room_id;
         }
@@ -183,10 +174,8 @@ class AdvertiserData2 implements AdvertiserDataInterface
     private function storeRoomTaxes($db, $room_tax_data, $room_id)
     {
 
-        // create room tax
         $room_tax = new RoomTaxes($db);
 
-        // set room property values
         $room_tax->currency = $room_tax_data->currency;
         $room_tax->type = $room_tax_data->type;
         $room_tax->amount = $room_tax_data->amount;
@@ -195,7 +184,6 @@ class AdvertiserData2 implements AdvertiserDataInterface
 
         $room_tax_id = $room_tax->create();
 
-// create the room
         if ($room_tax_id !== false) {
             return $room_tax_id;
         }

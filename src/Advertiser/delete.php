@@ -6,7 +6,6 @@ use App\Objects\Advertiser;
 
 require_once '../../vendor/autoload.php';
 
-
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -38,10 +37,8 @@ if ($advertiser->delete()) {
 
     // tell the user
     echo json_encode(array("message" => "Advertiser was deleted."));
-}
-
-// if unable to delete the advertiser
-else {
+} else {
+    // if unable to delete the advertiser
 
     // set response code - 503 service unavailable
     http_response_code(503);

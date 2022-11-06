@@ -36,11 +36,8 @@ if ($advertiser->delete()) {
 
     // tell the user
     echo json_encode(array("message" => "RoomTaxes was deleted."));
-}
-
-// if unable to delete the advertiser
-else {
-
+} else {
+    // if unable to delete the advertiser
     // set response code - 503 service unavailable
     http_response_code(503);
 

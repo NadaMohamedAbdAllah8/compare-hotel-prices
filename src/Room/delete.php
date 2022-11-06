@@ -36,10 +36,8 @@ if ($room->delete()) {
 
     // tell the user
     echo json_encode(array("message" => "Room was deleted."));
-}
-
-// if unable to delete the room
-else {
+} else {
+    // if unable to delete the room
 
     // set response code - 503 service unavailable
     http_response_code(503);

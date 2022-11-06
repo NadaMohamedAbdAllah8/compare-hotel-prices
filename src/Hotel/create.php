@@ -53,14 +53,13 @@ if (
         // tell the user
         echo json_encode(array("message" => "Unable to create hotel."));
     }
-}
+} else {
 
-// tell the user data is incomplete
-else {
+    // tell the user data is incomplete
 
-// set response code - 400 bad request
+    // set response code - 400 bad request
     http_response_code(400);
 
-// tell the user
+    // tell the user
     echo json_encode(array("message" => "Unable to create hotel. Data is incomplete."));
 }

@@ -4,7 +4,6 @@ namespace App\Advertiser;
 
 use App\Config\Database;
 use App\Objects\Advertiser;
-use PDO;
 
 require_once '../../vendor/autoload.php';
 

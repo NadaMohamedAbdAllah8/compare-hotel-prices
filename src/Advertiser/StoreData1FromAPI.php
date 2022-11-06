@@ -6,7 +6,6 @@ use App\Objects\Advertiser;
 use App\Service\AdvertiserApi;
 use App\Service\AdvertiserData1;
 use Exception;
-use PDO;
 
 require_once '../../vendor/autoload.php';
 
@@ -47,10 +46,10 @@ if ($read_advertiser) {
         $db->beginTransaction();
 
         if ($advertiser_1_data->storeData() === false) {
-// set response code - 503 service unavailable
+            // set response code - 503 service unavailable
             http_response_code(503);
 
-// tell the user
+            // tell the user
             echo json_encode(array("message" => "Unable to read advertiser's data from API."));
 
         }
@@ -61,6 +60,7 @@ if ($read_advertiser) {
 
         // tell the user
         echo json_encode(array("message" => "Advertiser's data was stored."));
+
     } catch (Exception $e) {
         $db->rollBack();
 
@@ -70,10 +70,8 @@ if ($read_advertiser) {
         echo json_encode(array("message" => "Could not store data." . $e->getMessage()));
 
     }
-}
-
-// if unable to store the advertiser
-else {
+} else {
+    // if unable to store the advertiser
 
     // set response code - 503 service unavailable
     http_response_code(503);
