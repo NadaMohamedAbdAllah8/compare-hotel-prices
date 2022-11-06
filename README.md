@@ -4,7 +4,7 @@
 
 1. Create the database. There is a sql script attached to create the database tables
 
-2. For the first time, use composer install, then, use composer dump-autload, in order to autoload the classes. Note that you will need composer to be installed first before running the command.
+2. For the first time, use composer install, then, use composer dump-autoload, in order to autoload the classes. Note that you will need composer to be installed first before running the command.
 
 3. Use the collection to run the APIs
    1. Create advertiser. Add the advertiser URL (required), method (required), name (optional)
