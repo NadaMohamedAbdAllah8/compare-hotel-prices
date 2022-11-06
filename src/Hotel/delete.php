@@ -21,7 +21,7 @@ $db = $database->getConnection();
 $hotel = new Hotel($db);
 
 // get hotel id
-//$data = json_decode(file_get_contents("php://input"));
+
 // reading data from form data
 $data = $_POST;
 

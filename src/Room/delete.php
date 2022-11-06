@@ -21,7 +21,7 @@ $db = $database->getConnection();
 $room = new Room($db);
 
 // get room id
-//$data = json_decode(file_get_contents("php://input"));
+
 // reading data from form data
 $data = $_POST;
 

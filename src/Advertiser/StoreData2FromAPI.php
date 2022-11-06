@@ -25,7 +25,6 @@ $db = $database->getConnection();
 $advertiser = new Advertiser($db);
 
 // get advertiser id
-//$data = json_decode(file_get_contents("php://input"));
 
 // reading data from form data
 $data = $_POST;
