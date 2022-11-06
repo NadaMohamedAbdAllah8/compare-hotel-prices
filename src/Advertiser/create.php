@@ -21,17 +21,19 @@ $advertiser = new Advertiser($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
+// reading data from form data
+$data = $_POST;
 
 // make sure data is not empty
 if (
-    !empty($data->url) &&
-    !empty($data->method)
+    !empty($data['url']) &&
+    !empty($data['method'])
 ) {
 
     // set advertiser property values
-    $advertiser->name = $data->name ?? " ";
-    $advertiser->url = $data->url;
-    $advertiser->method = $data->method;
+    $advertiser->name = $data['name'] ?? " ";
+    $advertiser->url = $data['url'];
+    $advertiser->method = $data['method'];
     $advertiser->created = date('Y-m-d H:i:s');
 
     // create the advertiser
