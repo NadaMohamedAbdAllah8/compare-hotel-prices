@@ -5,18 +5,15 @@
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19948061"
 	},
-	"item": [
-		{
+	"item": [ {
 			"name": "ListAdvertisers",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
+				"header": [ {
+					"key": "Accept",
+					"value": "application/json",
+					"type": "text"
+				} ],
 				"url": {
 					"raw": "{{url}}Advertiser/read.php",
 					"host": [
@@ -33,17 +30,14 @@
 			"name": "StoreAdvertisers",
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
+				"header": [ {
+					"key": "Accept",
+					"value": "application/json",
+					"type": "text"
+				} ],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
+					"formdata": [ {
 							"key": "name",
 							"value": "the second API",
 							"description": "optional ",
@@ -73,22 +67,18 @@
 					]
 				}
 			},
-			"response": [
-				{
+			"response": [ {
 					"name": "StoreAdvertisersForAPI1",
 					"originalRequest": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
+						"header": [ {
+							"key": "Accept",
+							"value": "application/json",
+							"type": "text"
+						} ],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
+							"formdata": [ {
 									"key": "name",
 									"value": "the first API",
 									"type": "text"
@@ -124,17 +114,14 @@
 					"name": "StoreAdvertisersForAPI2",
 					"originalRequest": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
+						"header": [ {
+							"key": "Accept",
+							"value": "application/json",
+							"type": "text"
+						} ],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
+							"formdata": [ {
 									"key": "name",
 									"value": "the second API",
 									"type": "text"
@@ -172,23 +159,19 @@
 			"name": "StoreData1FromAPI",
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
+				"header": [ {
+					"key": "Accept",
+					"value": "application/json",
+					"type": "text"
+				} ],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id",
-							"value": "1",
-							"description": "required",
-							"type": "text"
-						}
-					]
+					"formdata": [ {
+						"key": "id",
+						"value": "1",
+						"description": "required",
+						"type": "text"
+					} ]
 				},
 				"url": {
 					"raw": "{{url}}Advertiser/storeData1FromAPI.php",
@@ -198,13 +181,11 @@
 					"path": [
 						"storeData1FromAPI.php"
 					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1",
-							"disabled": true
-						}
-					]
+					"query": [ {
+						"key": "id",
+						"value": "1",
+						"disabled": true
+					} ]
 				}
 			},
 			"response": []
@@ -213,23 +194,19 @@
 			"name": "StoreData2FromAPI",
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
+				"header": [ {
+					"key": "Accept",
+					"value": "application/json",
+					"type": "text"
+				} ],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id",
-							"value": "2",
-							"description": "required",
-							"type": "text"
-						}
-					]
+					"formdata": [ {
+						"key": "id",
+						"value": "2",
+						"description": "required",
+						"type": "text"
+					} ]
 				},
 				"url": {
 					"raw": "{{url}}Advertiser/storeData2FromAPI.php",
@@ -247,17 +224,14 @@
 			"name": "ComparePrices",
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
+				"header": [ {
+					"key": "Accept",
+					"value": "application/json",
+					"type": "text"
+				} ],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
+					"formdata": [ {
 							"key": "id[0]",
 							"value": "2",
 							"description": "required",
@@ -286,23 +260,19 @@
 			"name": "DeleteAdvertisers",
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
+				"header": [ {
+					"key": "Accept",
+					"value": "application/json",
+					"type": "text"
+				} ],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id",
-							"value": "12",
-							"description": "required",
-							"type": "text"
-						}
-					]
+					"formdata": [ {
+						"key": "id",
+						"value": "12",
+						"description": "required",
+						"type": "text"
+					} ]
 				},
 				"url": {
 					"raw": "{{url}}advertiser/delete.php",
