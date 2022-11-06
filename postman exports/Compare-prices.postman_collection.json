@@ -30,6 +30,145 @@
 			"response": []
 		},
 		{
+			"name": "StoreAdvertisers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "the second API",
+							"description": "optional ",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s2/availability",
+							"description": "required",
+							"type": "text"
+						},
+						{
+							"key": "method",
+							"value": "get",
+							"description": "required",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}advertiser/create.php",
+					"host": [
+						"{{url}}advertiser"
+					],
+					"path": [
+						"create.php"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "StoreAdvertisersForAPI1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "the first API",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s1/availability",
+									"type": "text"
+								},
+								{
+									"key": "method",
+									"value": "get",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}advertiser/create.php",
+							"host": [
+								"{{url}}advertiser"
+							],
+							"path": [
+								"create.php"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "StoreAdvertisersForAPI2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "the second API",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s2/availability",
+									"type": "text"
+								},
+								{
+									"key": "method",
+									"value": "get",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}advertiser/create.php",
+							"host": [
+								"{{url}}advertiser"
+							],
+							"path": [
+								"create.php"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
 			"name": "StoreData1FromAPI",
 			"request": {
 				"method": "POST",
@@ -142,94 +281,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "StoreAdvertisers",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"name\":\"the second API\",\r\n\"url\":\"https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s2/availability\",\r\n\"method\":\"get\"}"
-				},
-				"url": {
-					"raw": "{{url}}advertiser/create.php",
-					"host": [
-						"{{url}}advertiser"
-					],
-					"path": [
-						"create.php"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "StoreAdvertisersForAPI1",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"name\":\"the first API\",\r\n\"url\":\"https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s1/availability\",\r\n\"method\":\"get\"}"
-						},
-						"url": {
-							"raw": "{{url}}advertiser/create.php",
-							"host": [
-								"{{url}}advertiser"
-							],
-							"path": [
-								"create.php"
-							]
-						}
-					},
-					"_postman_previewlanguage": null,
-					"header": null,
-					"cookie": [],
-					"body": null
-				},
-				{
-					"name": "StoreAdvertisersForAPI2",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"name\":\"the first API\",\r\n\"url\":\"https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s2/availability\",\r\n\"method\":\"get\"}"
-						},
-						"url": {
-							"raw": "{{url}}advertiser/create.php",
-							"host": [
-								"{{url}}advertiser"
-							],
-							"path": [
-								"create.php"
-							]
-						}
-					},
-					"_postman_previewlanguage": null,
-					"header": null,
-					"cookie": [],
-					"body": null
-				}
-			]
 		},
 		{
 			"name": "DeleteAdvertisers",
